@@ -8,6 +8,9 @@ const toto = 'there !'
 
 root.render(
     <>
-        <App />
+        <App clickersCount={ 3 }>
+            <h1>Hello {toto}</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor alias recusandae accusantium? Delectus, ratione! Tempora vero alias dolores eius facere reprehenderit expedita quia velit, ullam neque asperiores officiis natus necessitatibus.</p>
+        </App>
     </>
 )
