@@ -1,1 +1,1 @@
-# React_tutorial
+# React Tutorial by Bruno Simon
