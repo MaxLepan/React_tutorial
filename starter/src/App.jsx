@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Clicker from "./Clicker.jsx";
 
 export default function App({ children, clickersCount }) 
@@ -14,7 +14,18 @@ export default function App({ children, clickersCount })
     const increment = () => {
         setCount(count + 1);
     }
+    
+    // `hsl(${ Math.random() * 360 }deg, 100%, 70%)`
 
+    const colors = useMemo(() => {
+        const colors = []
+
+        for (let i = 0; i < clickersCount; i++)
+            colors.push(`hsl(${ Math.random() * 360 }deg, 100%, 70%)`)
+
+        return colors
+    }, [ clickersCount ])
+    
     return (
         <>
             { children }
@@ -25,10 +36,10 @@ export default function App({ children, clickersCount })
             { hasClicker && <>
                 { [...Array(clickersCount)].map((value, index) =>
                     <Clicker 
-                    key={ index }
+                        key={ index }
                         increment={ increment } 
                         keyName={ `clicker${ index }` }
-                        color={ `hsl(${ Math.random() * 360 }deg, 100%, 70%)` } 
+                        color={ colors[index] } 
                     />
                 ) }
             </> }
